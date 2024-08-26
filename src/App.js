@@ -25,6 +25,23 @@ import ToastNotification from './components/taskComponents/ToastNotification';
 import AutocompleteTypeahead from './components/taskComponents/AutocompleteTypeahead';
 import ScrollToTop from './components/globalComponents/ScrollToTop';
 
+import Polyfills from './components/taskComponents/Polyfills';
+import DebouncingThrottle from './components/taskComponents/DebouncingThrottle';
+import Currying from './components/taskComponents/Currying';
+import FlattenDeepCopyShallowCopyInvertObject from './components/taskComponents/FlattenDeepCopyShallowCopyInvertObject';
+import StopwatchTimerCounter from './components/taskComponents/StopwatchTimerCounter';
+import WeatherApiGeolocationApiCoordinates from './components/taskComponents/WeatherApiGeolocationApiCoordinates';
+import ContextApi from './components/taskComponents/ContextApi';
+import LikeButton from './components/taskComponents/LikeButton';
+import DarkLightMode from './components/taskComponents/DarkLightMode';
+import Breadcrumbs from './components/taskComponents/Breadcrumbs';
+import Stepper from './components/taskComponents/Stepper';
+import DragNDrop from './components/taskComponents/DragNDrop';
+import AutoSuggestion from './components/taskComponents/AutoSuggestion';
+import UseMemoUseEffectUseThrottleHook from './components/taskComponents/UseMemoUseEffectUseThrottleHook';
+import PasswordGenerator from './components/taskComponents/PasswordGenerator';
+import FileExplorer from './components/taskComponents/FileExplorer';
+
 function App() {
   return (
     <BrowserRouter>
@@ -54,6 +71,23 @@ function App() {
           <Route path="/tasks/star-rating" element={<StarRating />} />
           <Route path="/tasks/toast-notification" element={<ToastNotification />} />
           <Route path="/tasks/autocomplete-typeahead" element={<AutocompleteTypeahead />} />
+
+          <Route path="/tasks/polyfills" element={<Polyfills />} />
+          <Route path="/tasks/debouncing-throttle" element={<DebouncingThrottle />} />
+          <Route path="/tasks/currying" element={<Currying />} />
+          <Route path="/tasks/flatten-deepcopy-shallowcopy-invertobject" element={<FlattenDeepCopyShallowCopyInvertObject />} />
+          <Route path="/tasks/stopwatch-timer-counter" element={<StopwatchTimerCounter />} />
+          <Route path="/tasks/weatherapi-geolocationapi-coordinates" element={<WeatherApiGeolocationApiCoordinates />} />
+          <Route path="/tasks/context-api" element={<ContextApi />} />
+          <Route path="/tasks/like-button" element={<LikeButton />} />
+          <Route path="/tasks/dark-light-mode" element={<DarkLightMode />} />
+          <Route path="/tasks/breadcrumbs" element={<Breadcrumbs />} />
+          <Route path="/tasks/stepper" element={<Stepper />} />
+          <Route path="/tasks/drag-n-drop" element={<DragNDrop />} />
+          <Route path="/tasks/auto-suggestion" element={<AutoSuggestion />} />
+          <Route path="/tasks/usememo-useeffect-usethrottle" element={<UseMemoUseEffectUseThrottleHook />} />
+          <Route path="/tasks/password-generator-js" element={<PasswordGenerator />} />
+          <Route path="/tasks/file-explorer" element={<FileExplorer />} />
         </Routes>
       </ScrollToTop>
     </BrowserRouter>

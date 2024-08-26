@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle, Circle, Clock } from 'lucide-react';
+import { CheckCircle, Circle, Clock, GithubIcon } from 'lucide-react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,35 +7,53 @@ import { cycleTaskStatus } from '../slices/taskStatusSlice';
 import { TaskStatus } from '../utils/taskStatusEnum';
 
 const tasks = [
-    { name: "Todo List", endpoint: "/tasks/todo-list" },
-    { name: "Signup Form", endpoint: "/tasks/signup-form" },
-    { name: "Temperature Converter", endpoint: "/tasks/temperature-converter" },
-    { name: "Progress Bar", endpoint: "/tasks/progress-bar" },
-    { name: "Analog Clock", endpoint: "/tasks/analog-clock" },
-    { name: "Job Board", endpoint: "/tasks/job-board" },
-    { name: "Whack-a-mole", endpoint: "/tasks/whack-a-mole" },
-    { name: "Tic-tac-toe", endpoint: "/tasks/tic-tac-toe" },
-    { name: "Tabs", endpoint: "/tasks/tabs" },
-    { name: "Image Carousel", endpoint: "/tasks/image-carousel" },
-    { name: "Autocomplete", endpoint: "/tasks/autocomplete" },
-    { name: "Dropdown Menu", endpoint: "/tasks/dropdown-menu" },
-    { name: "Modal", endpoint: "/tasks/modal" },
-    { name: "Accordion", endpoint: "/tasks/accordion" },
-    { name: "Holy Grail", endpoint: "/tasks/holy-grail" },
-    { name: "Pagination", endpoint: "/tasks/pagination" },
-    { name: "Truncated Pagination", endpoint: "/tasks/truncated-pagination" },
-    { name: "Infinite Scroll", endpoint: "/tasks/infinite-scroll" },
-    { name: "Configurable Color Boxes", endpoint: "/tasks/configurable-color-boxes" },
-    { name: "Posts with Nested comments", endpoint: "/tasks/posts-with-nested-comments" },
-    { name: "Star Rating", endpoint: "/tasks/star-rating" },
-    { name: "Toast/Notification Comp", endpoint: "/tasks/toast-notification" },
-    { name: "Autocompleted/Typeahead", endpoint: "/tasks/autocomplete-typeahead" }
+  { name: "Todo List", endpoint: "/tasks/todo-list", difficulty: "Easy" },
+  { name: "Signup Form", endpoint: "/tasks/signup-form", difficulty: "Easy" },
+  { name: "Temperature Converter", endpoint: "/tasks/temperature-converter", difficulty: "Easy" },
+  { name: "Progress Bar", endpoint: "/tasks/progress-bar", difficulty: "Easy" },
+  { name: "Analog Clock", endpoint: "/tasks/analog-clock", difficulty: "Easy" },
+  { name: "Job Board", endpoint: "/tasks/job-board", difficulty: "Easy" },
+  { name: "Whack-a-mole", endpoint: "/tasks/whack-a-mole", difficulty: "Easy" },
+  { name: "Tic-tac-toe", endpoint: "/tasks/tic-tac-toe", difficulty: "Difficult" },
+  { name: "Tabs", endpoint: "/tasks/tabs", difficulty: "Easy" },
+  { name: "Image Carousel", endpoint: "/tasks/image-carousel", difficulty: "Easy" },
+  { name: "Autocomplete", endpoint: "/tasks/autocomplete", difficulty: "Moderate" },
+  { name: "Dropdown Menu", endpoint: "/tasks/dropdown-menu", difficulty: "Moderate" },
+  { name: "Modal", endpoint: "/tasks/modal", difficulty: "Moderate" },
+  { name: "Accordion", endpoint: "/tasks/accordion", difficulty: "Moderate" },
+  { name: "Holy Grail", endpoint: "/tasks/holy-grail", difficulty: "Easy" },
+  { name: "Pagination", endpoint: "/tasks/pagination", difficulty: "Moderate" },
+  { name: "Truncated Pagination", endpoint: "/tasks/truncated-pagination", difficulty: "Moderate" },
+  { name: "Infinite Scroll", endpoint: "/tasks/infinite-scroll", difficulty: "Moderate" },
+  { name: "Configurable Color Boxes", endpoint: "/tasks/configurable-color-boxes", difficulty: "Easy" },
+  { name: "Posts with Nested comments", endpoint: "/tasks/posts-with-nested-comments", difficulty: "Difficult" },
+  { name: "Star Rating", endpoint: "/tasks/star-rating", difficulty: "Easy" },
+  { name: "Toast/Notification Comp", endpoint: "/tasks/toast-notification", difficulty: "Difficult" },
+  { name: "Autocompleted/Typeahead", endpoint: "/tasks/autocomplete-typeahead", difficulty: "Moderate" },
+  { name: "Polyfills", endpoint: "/tasks/polyfills", difficulty: "Easy" },
+  { name: "Debouncing / Throttle", endpoint: "/tasks/debouncing-throttle", difficulty: "Easy" },
+  { name: "Currying", endpoint: "/tasks/currying", difficulty: "Easy" },
+  { name: "flatten / Deep Copy / Shallow Copy / invert OBJECT", endpoint: "/tasks/flatten-deepcopy-shallowcopy-invertobject", difficulty: "Easy" },
+  { name: "Stopwatch / Timer / Counter", endpoint: "/tasks/stopwatch-timer-counter", difficulty: "Easy" },
+  { name: "Weather API / Geolocation API coordinates", endpoint: "/tasks/weatherapi-geolocationapi-coordinates", difficulty: "Easy" },
+  { name: "Context API", endpoint: "/tasks/context-api", difficulty: "Easy" },
+  { name: "Like button", endpoint: "/tasks/like-button", difficulty: "Easy" },
+  { name: "Dark-light mode", endpoint: "/tasks/dark-light-mode", difficulty: "Moderate" },
+  { name: "Breadcrumbs", endpoint: "/tasks/breadcrumbs", difficulty: "Moderate" },
+  { name: "Stepper", endpoint: "/tasks/stepper", difficulty: "Moderate" },
+  { name: "Drag n drop", endpoint: "/tasks/drag-n-drop", difficulty: "Moderate" },
+  { name: "Auto Suggestion", endpoint: "/tasks/auto-suggestion", difficulty: "Moderate" },
+  { name: "useMemo / useEffect / useThrottle Hook", endpoint: "/tasks/usememo-useeffect-usethrottle", difficulty: "Moderate" },
+  { name: "Password Generator -> JS", endpoint: "/tasks/password-generator-js", difficulty: "Moderate" },
+  { name: "File Explorer -> JS/React", endpoint: "/tasks/file-explorer", difficulty: "Difficult" }
 ];
 
+console.log(tasks.length);
+
 const statusIcons = {
-    [TaskStatus.PENDING]: <Circle style={{ width: '1.5rem', height: '1.5rem', color: '#9CA3AF' }} />, // Gray-400
-    [TaskStatus.STARTED]: <Clock style={{ width: '1.5rem', height: '1.5rem', color: '#FBBF24' }} />, // Yellow-500
-    [TaskStatus.COMPLETED]: <CheckCircle style={{ width: '1.5rem', height: '1.5rem', color: '#10B981' }} /> // Green-500
+  [TaskStatus.PENDING]: <Circle style={{ width: '1.5rem', height: '1.5rem', color: '#9CA3AF' }} />, // Gray-400
+  [TaskStatus.STARTED]: <Clock style={{ width: '1.5rem', height: '1.5rem', color: '#FBBF24' }} />, // Yellow-500
+  [TaskStatus.COMPLETED]: <CheckCircle style={{ width: '1.5rem', height: '1.5rem', color: '#10B981' }} /> // Green-500
 };
 
 // Styled Components
@@ -64,6 +82,17 @@ const Container = styled.div`
   position: relative;
   z-index: 10;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+  .githubIcon {
+   color: white;
+   border: 0.1rem solid #A78BFA;
+   padding: 0.5rem;
+   border-radius: 50%;
+   width: 2rem;
+   height: 2rem;
+   cursor: pointer;
+
+  }
 `;
 
 const Title = styled.h1`
@@ -74,6 +103,10 @@ const Title = styled.h1`
   background: linear-gradient(to right, #6366F1, #A78BFA, #EC4899);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
 `;
 
 const Description = styled.p`
@@ -106,6 +139,13 @@ const TaskGrid = styled.div`
   }
 `;
 
+const TaskGridMain = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  
+`;
+
 const TaskCard = styled.div`
   background: rgba(3, 2, 19, 0.8);
   border-radius: 0.5rem;
@@ -132,7 +172,6 @@ const TaskHeader = styled.div`
 `;
 
 const TaskTitle = styled.span`
-  color: #1F2937;
   font-weight: 500;
   font-size: 0.75rem;
   line-height: 1.25rem;
@@ -143,42 +182,68 @@ const TaskTitle = styled.span`
     font-size: 1rem;
   }
 `;
+const DifficultyTitle = styled.span`
+  background: linear-gradient(to bottom right, #6366F1, #A78BFA, #EC4899);
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-left: 1.5rem;
+`;
 
 const HomePage = () => {
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const taskStatuses = useSelector(state => state.tasks);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const taskStatuses = useSelector(state => state.tasks);
 
-    const handleTaskStatusClick = (task) => {
-        dispatch(cycleTaskStatus(task.name));
-    }
+  const handleTaskStatusClick = (task) => {
+    dispatch(cycleTaskStatus(task.name));
+  }
 
-    const handleTaskClick = (task) => {
-        navigate(task.endpoint)
-    }
+  const handleTaskClick = (task) => {
+    navigate(task.endpoint)
+  }
 
-    return (
-        <Wrapper>
-            <StarryOverlay />
-            <Container>
-                <Title>React & JavaScript DOM Practice</Title>
-                <Description>Track progress on these React & JavaScript DOM tasks!</Description>
-                <TaskGrid>
-                    {tasks?.map((task) => (
-                        <TaskCard key={task?.name} onClick={() => handleTaskClick(task)}>
-                            <TaskHeader>
-                                <TaskTitle>{task?.name}</TaskTitle>
-                                <span onClick={(e) => {
-                                    e.stopPropagation();  // Prevents the TaskCard onClick from being triggered
-                                    handleTaskStatusClick(task)
-                                }}>{statusIcons[taskStatuses[task.name]]}</span>
-                            </TaskHeader>
-                        </TaskCard>
-                    ))}
-                </TaskGrid>
-            </Container>
-        </Wrapper>
-    );
+  const getTaskByDifficultyLevel = (difficulty) => {
+    return tasks.filter(task => task.difficulty.toLowerCase() === difficulty.toLowerCase());
+  }
+
+  const openGithubRepo = () => {
+    const url = "https://github.com/abhipandey1402/react-practice-2024"
+
+    window.open(url, "_blank");
+  }
+
+  return (
+    <Wrapper>
+      <StarryOverlay />
+      <Container>
+        <Title>React & JavaScript DOM Practice <GithubIcon className='githubIcon' onClick={openGithubRepo}/></Title>
+        <Description>Track progress on these React & JavaScript DOM tasks!</Description>
+        <TaskGridMain>
+          {['Easy', 'Moderate', 'Difficult'].map((difficulty) => (
+            <>
+              <DifficultyTitle>{difficulty}</DifficultyTitle>
+              <TaskGrid>
+                {getTaskByDifficultyLevel(difficulty)?.map((task) => (
+                  <TaskCard key={task?.name} onClick={() => handleTaskClick(task)}>
+                    <TaskHeader>
+                      <TaskTitle>{task?.name}</TaskTitle>
+                      <span onClick={(e) => {
+                        e.stopPropagation();  // Prevents the TaskCard onClick from being triggered
+                        handleTaskStatusClick(task)
+                      }}>{statusIcons[taskStatuses[task.name]]}</span>
+                    </TaskHeader>
+                  </TaskCard>
+                ))}
+              </TaskGrid></>
+          ))}
+
+        </TaskGridMain>
+      </Container>
+    </Wrapper>
+  );
 };
 
 export default HomePage;
