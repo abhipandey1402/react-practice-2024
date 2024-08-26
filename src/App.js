@@ -23,36 +23,39 @@ import PostsWithNestedComments from './components/taskComponents/PostsWithNested
 import StarRating from './components/taskComponents/StarRating';
 import ToastNotification from './components/taskComponents/ToastNotification';
 import AutocompleteTypeahead from './components/taskComponents/AutocompleteTypeahead';
+import ScrollToTop from './components/globalComponents/ScrollToTop';
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route exact path='/' element={<HomePage />} />
-        <Route path="/tasks/todo-list" element={<TodoList />} />
-        <Route path="/tasks/signup-form" element={<SignupForm />} />
-        <Route path="/tasks/temperature-converter" element={<TemperatureConverter />} />
-        <Route path="/tasks/progress-bar" element={<ProgressBar />} />
-        <Route path="/tasks/analog-clock" element={<AnalogClock />} />
-        <Route path="/tasks/job-board" element={<JobBoard />} />
-        <Route path="/tasks/whack-a-mole" element={<WhackAMole />} />
-        <Route path="/tasks/tic-tac-toe" element={<TicTacToe />} />
-        <Route path="/tasks/tabs" element={<Tabs />} />
-        <Route path="/tasks/image-carousel" element={<ImageCarousel />} />
-        <Route path="/tasks/autocomplete" element={<Autocomplete />} />
-        <Route path="/tasks/dropdown-menu" element={<DropdownMenu />} />
-        <Route path="/tasks/modal" element={<Modal />} />
-        <Route path="/tasks/accordion" element={<Accordion />} />
-        <Route path="/tasks/holy-grail" element={<HolyGrail />} />
-        <Route path="/tasks/pagination" element={<Pagination />} />
-        <Route path="/tasks/truncated-pagination" element={<TruncatedPagination />} />
-        <Route path="/tasks/infinite-scroll" element={<InfiniteScroll />} />
-        <Route path="/tasks/configurable-color-boxes" element={<ConfigurableColorBoxes />} />
-        <Route path="/tasks/posts-with-nested-comments" element={<PostsWithNestedComments />} />
-        <Route path="/tasks/star-rating" element={<StarRating />} />
-        <Route path="/tasks/toast-notification" element={<ToastNotification />} />
-        <Route path="/tasks/autocomplete-typeahead" element={<AutocompleteTypeahead />} />
-      </Routes>
+      <ScrollToTop>
+        <Routes>
+          <Route exact path='/' element={<HomePage />} />
+          <Route path="/tasks/todo-list" element={<TodoList />} />
+          <Route path="/tasks/signup-form" element={<SignupForm />} />
+          <Route path="/tasks/temperature-converter" element={<TemperatureConverter />} />
+          <Route path="/tasks/progress-bar" element={<ProgressBar />} />
+          <Route path="/tasks/analog-clock" element={<AnalogClock />} />
+          <Route path="/tasks/job-board" element={<JobBoard />} />
+          <Route path="/tasks/whack-a-mole" element={<WhackAMole />} />
+          <Route path="/tasks/tic-tac-toe" element={<TicTacToe />} />
+          <Route path="/tasks/tabs" element={<Tabs />} />
+          <Route path="/tasks/image-carousel" element={<ImageCarousel />} />
+          <Route path="/tasks/autocomplete" element={<Autocomplete />} />
+          <Route path="/tasks/dropdown-menu" element={<DropdownMenu />} />
+          <Route path="/tasks/modal" element={<Modal />} />
+          <Route path="/tasks/accordion" element={<Accordion />} />
+          <Route path="/tasks/holy-grail" element={<HolyGrail />} />
+          <Route path="/tasks/pagination" element={<Pagination />} />
+          <Route path="/tasks/truncated-pagination" element={<TruncatedPagination />} />
+          <Route path="/tasks/infinite-scroll" element={<InfiniteScroll />} />
+          <Route path="/tasks/configurable-color-boxes" element={<ConfigurableColorBoxes />} />
+          <Route path="/tasks/posts-with-nested-comments" element={<PostsWithNestedComments />} />
+          <Route path="/tasks/star-rating" element={<StarRating />} />
+          <Route path="/tasks/toast-notification" element={<ToastNotification />} />
+          <Route path="/tasks/autocomplete-typeahead" element={<AutocompleteTypeahead />} />
+        </Routes>
+      </ScrollToTop>
     </BrowserRouter>
   );
 }

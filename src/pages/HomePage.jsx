@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { CheckCircle, Circle, Clock } from 'lucide-react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+import { cycleTaskStatus } from '../slices/taskStatusSlice';
+import { TaskStatus } from '../utils/taskStatusEnum';
 
 const tasks = [
     { name: "Todo List", endpoint: "/tasks/todo-list" },
@@ -28,13 +31,6 @@ const tasks = [
     { name: "Toast/Notification Comp", endpoint: "/tasks/toast-notification" },
     { name: "Autocompleted/Typeahead", endpoint: "/tasks/autocomplete-typeahead" }
 ];
-
-
-const TaskStatus = {
-    PENDING: 'pending',
-    STARTED: 'started',
-    COMPLETED: 'completed'
-};
 
 const statusIcons = {
     [TaskStatus.PENDING]: <Circle style={{ width: '1.5rem', height: '1.5rem', color: '#9CA3AF' }} />, // Gray-400
@@ -81,7 +77,7 @@ const Title = styled.h1`
 `;
 
 const Description = styled.p`
-  color: var(--grey);
+  color: lightgrey;
   font-size: 1.25rem;
   text-align: center;
   margin-bottom: 2.5rem;
@@ -150,23 +146,11 @@ const TaskTitle = styled.span`
 
 const HomePage = () => {
     const navigate = useNavigate();
-    const [taskStatuses, setTaskStatuses] = useState(
-        tasks?.reduce((acc, task) => ({ ...acc, [task.name]: TaskStatus.PENDING }), {})
-    );
-
-    const cycleStatus = (task) => {
-        const currentStatus = taskStatuses[task.name];
-        const nextStatus = {
-            [TaskStatus.PENDING]: TaskStatus.STARTED,
-            [TaskStatus.STARTED]: TaskStatus.COMPLETED,
-            [TaskStatus.COMPLETED]: TaskStatus.PENDING
-        }[currentStatus];
-
-        setTaskStatuses({ ...taskStatuses, [task.name]: nextStatus });
-    };
+    const dispatch = useDispatch();
+    const taskStatuses = useSelector(state => state.tasks);
 
     const handleTaskStatusClick = (task) => {
-        cycleStatus(task);
+        dispatch(cycleTaskStatus(task.name));
     }
 
     const handleTaskClick = (task) => {
@@ -177,8 +161,8 @@ const HomePage = () => {
         <Wrapper>
             <StarryOverlay />
             <Container>
-                <Title>React Practice Project</Title>
-                <Description>Track your progress on these React tasks!</Description>
+                <Title>React & JavaScript DOM Practice</Title>
+                <Description>Track progress on these React & JavaScript DOM tasks!</Description>
                 <TaskGrid>
                     {tasks?.map((task) => (
                         <TaskCard key={task?.name} onClick={() => handleTaskClick(task)}>
