@@ -7,8 +7,8 @@ export const executeCodeCompilation = async (language, fileName, fileContent) =>
         url: 'https://onecompiler-apis.p.rapidapi.com/api/v1/run',
         headers: {
             'content-type': 'application/json',
-            'X-RapidAPI-Key': "d7cb9d4e26msh56f1b66d1c253a8p1aa910jsn049e2135d115",
-            'X-RapidAPI-Host': "onecompiler-apis.p.rapidapi.com"
+            'X-RapidAPI-Key': process.env.REACT_APP_ONECOMPILER_RAPIDAPI_KEY,
+            'X-RapidAPI-Host': process.env.REACT_APP_ONECOMPILER_RAPIDAPI_HOST
         },
         data: {
             language: language,
