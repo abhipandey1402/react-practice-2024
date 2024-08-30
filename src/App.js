@@ -41,6 +41,8 @@ import AutoSuggestion from './components/taskComponents/AutoSuggestion';
 import UseMemoUseEffectUseThrottleHook from './components/taskComponents/UseMemoUseEffectUseThrottleHook';
 import PasswordGenerator from './components/taskComponents/PasswordGenerator';
 import FileExplorer from './components/taskComponents/FileExplorer';
+import JavaScriptPracticeQuestions from './pages/JavaScriptPracticeQuestions';
+import JavascriptQuestions from './pages/JavascriptQuestions';
 
 function App() {
   return (
@@ -48,6 +50,8 @@ function App() {
       <ScrollToTop>
         <Routes>
           <Route exact path='/' element={<HomePage />} />
+          <Route path="/javascript-practice" element={<JavascriptQuestions />} />
+          <Route path="/javascript-practice/:questionId" element={<JavaScriptPracticeQuestions />} />
           <Route path="/tasks/todo-list" element={<TodoList />} />
           <Route path="/tasks/signup-form" element={<SignupForm />} />
           <Route path="/tasks/temperature-converter" element={<TemperatureConverter />} />

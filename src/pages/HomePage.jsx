@@ -107,6 +107,7 @@ const Title = styled.h1`
   justify-content: center;
   align-items: center;
   gap: 2rem;
+  margin-top: 4rem;
 `;
 
 const Description = styled.p`
@@ -192,6 +193,27 @@ const DifficultyTitle = styled.span`
   padding-left: 1.5rem;
 `;
 
+
+const Button = styled.button`
+  background: linear-gradient(to bottom right, #6366F1, #A78BFA);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  transition: background 0.3s;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+
+  &:hover {
+  background: linear-gradient(to bottom right, #EC4899, #A78BFA, #6366F1);
+  }
+`;
+
 const HomePage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -219,7 +241,8 @@ const HomePage = () => {
     <Wrapper>
       <StarryOverlay />
       <Container>
-        <Title>React & JavaScript DOM Practice <GithubIcon className='githubIcon' onClick={openGithubRepo}/></Title>
+        <Button onClick={() => navigate("/javascript-practice")}>Practice JavaScript</Button>
+        <Title>React & JavaScript DOM Practice <GithubIcon className='githubIcon' onClick={openGithubRepo} /></Title>
         <Description>Track progress on these React & JavaScript DOM tasks!</Description>
         <TaskGridMain>
           {['Easy', 'Moderate', 'Difficult'].map((difficulty) => (
